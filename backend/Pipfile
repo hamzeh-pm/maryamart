@@ -11,6 +11,7 @@ persiantools = "*"
 redis = "*"
 psycopg2-binary = "*"
 djangorestframework-simplejwt = "*"
+pillow = "*"
 
 [dev-packages]
 black = "*"

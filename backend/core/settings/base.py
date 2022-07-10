@@ -18,6 +18,14 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "corsheaders",
+    # local
+    "accounts",
+    "arts",
+    "customizations",
+    "logger",
+    "notifications",
+    "orders",
+    "reactions",
 ]
 
 MIDDLEWARE = [
@@ -109,6 +117,10 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = "/static/"
 
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR.joinpath("media")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -130,6 +142,10 @@ CACHES = {
 # Cors
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+# Custom User Model
+AUTH_USER_MODEL = "accounts.Account"
 
 
 # REST Framework

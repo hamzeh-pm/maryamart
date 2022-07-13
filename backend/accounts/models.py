@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
+from utils.validators import validate_mobile
 
 
 # Create your models here.
@@ -51,7 +52,9 @@ class Account(AbstractBaseUser, PermissionsMixin):
         ADMIN = "AD", "Admin"
 
     email = models.EmailField("email_address", unique=True)
-    mobile = models.CharField("cellphone_number", max_length=10, unique=True)
+    mobile = models.CharField(
+        "cellphone_number", max_length=10, unique=True, validators=[validate_mobile]
+    )
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=2, choices=Role.choices, default=Role.CLIENT)
     is_staff = models.BooleanField(default=False)

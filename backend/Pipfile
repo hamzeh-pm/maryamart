@@ -17,6 +17,8 @@ pillow = "*"
 black = "*"
 isort = "*"
 pytest-django = "*"
+model-bakery = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.10"

@@ -12,7 +12,7 @@ class ClientSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         password = validated_data.pop("password")
-        client = Account(is_active=False, **validated_data)
+        client = Account(**validated_data)
         client.set_password(password)
         client.save()
 

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from rest_framework import serializers
 
 from .models import Account
@@ -14,4 +15,11 @@ class ClientSerializer(serializers.ModelSerializer):
         client = Account(is_active=False, **validated_data)
         client.set_password(password)
         client.save()
+
+        # Create client group and set permission
+        client_group, created = Group.objects.get_or_create(name="client")
+        client.groups.add(client_group)
+
+        # Default permission have to add to this group here
+
         return client

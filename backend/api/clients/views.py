@@ -1,10 +1,9 @@
+from accounts.models import Account
+from accounts.serializers import ClientSerializer
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-
-from .models import Account
-from .serializers import ClientSerializer
 
 
 class ClientViewSet(ModelViewSet):

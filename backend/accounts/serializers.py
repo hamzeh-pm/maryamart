@@ -23,3 +23,10 @@ class ClientSerializer(serializers.ModelSerializer):
         # Default permission have to add to this group here
 
         return client
+
+
+class ClientUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ["email", "mobile", "name", "role"]
+        extra_kwargs = {"role": {"read_only": True}}

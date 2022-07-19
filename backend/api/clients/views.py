@@ -1,21 +1,23 @@
 from accounts.models import Account
-from accounts.serializers import ClientSerializer
+from accounts.serializers import ClientSerializer, ClientUpdateSerializer
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+
+from ..views import MultiSerializerModelViewSet
 
 
-class ClientViewSet(ModelViewSet):
+class ClientViewSet(MultiSerializerModelViewSet):
     queryset = Account.objects.all()
     serializer_class = ClientSerializer
+    serializer_dict = {"update": ClientUpdateSerializer}
 
     def list(self, request, *args, **kwargs):
         """
         See the list of clients - disabled in this path
         """
         resp = {"message": "list view is not provided in this path"}
-        return Response(resp, status=status.HTTP_403_FORBIDDEN)
+        return Response(resp, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def get_permissions(self):
         """
